@@ -11,12 +11,14 @@ import colors from 'colors'
 dotenv.config();
 
 const app = express();
+app.get('/',(req, res) =>
+    res.send('Hello to Memory API')
+)
 
 app.use(cors());
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-
 app.use("/posts", postRoutes);
 
 const CONNECTION_URL =  process.env.CONNECTION_URL;
